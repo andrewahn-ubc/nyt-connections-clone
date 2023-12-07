@@ -5,10 +5,12 @@ window.onload = function() {
 let height = 4;
 let width = 4;
 
-let purpleGroup = ["one", "two", "three", "four"];
-let blueGroup = ["red", "blue", "yellow", "green"];
-let greenGroup = ["YYC", "YVR", "YEG", "YYJ"];
-let yellowGroup = ["UBC", "UVic", "UofC", "UofA"];
+// panda, mouse, pocky, emily, reels, benny, cutie, kissy, 
+
+let purpleGroup = ["GF", "PAD", "LUCK", "TRAP"];
+let blueGroup = ["WORM", "MERMAID", "ALICE", "PANDA"];
+let greenGroup = ["SUPERSTAR", "KYKY", "GIRL", "BABY"];
+let yellowGroup = ["FLOAT", "DENNY", "LANGULY", "POCKY"];
 
 let wordlist = purpleGroup.concat(blueGroup, greenGroup, yellowGroup);
 
@@ -145,7 +147,7 @@ function checkSolution() {
             correctSoFar++;
 
             if (correctSoFar == 4) {
-                document.getElementById("result").innerText = "CONGRATS!!! You are a genius!!!";
+                document.getElementById("result").innerText = "You are a genius!!! Happy Birthday my love :)";
             }
 
             return;
@@ -156,7 +158,7 @@ function checkSolution() {
     document.getElementById("mistakes").innerText = "Mistakes remaining: " + mistakesRemaining.toString();
 
     if (mistakesRemaining == 0) {
-        document.getElementById("result").innerText = "Game over :(";
+        document.getElementById("result").innerText = "Game over :( You're still sexy tho";
     }
 }
 
