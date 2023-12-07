@@ -4,17 +4,13 @@ window.onload = function() {
 
 let height = 4;
 let width = 4;
-let gameOver = false;
-
-let wordlist = ["one", "two", "three", "four", 
-                "red", "blue", "yellow", "green", 
-                "YYC", "YVR", "YEG", "YYJ", 
-                "UBC", "UVic", "UofC", "UofA"];
 
 let purpleGroup = ["one", "two", "three", "four"];
 let blueGroup = ["red", "blue", "yellow", "green"];
 let greenGroup = ["YYC", "YVR", "YEG", "YYJ"];
 let yellowGroup = ["UBC", "UVic", "UofC", "UofA"];
+
+let wordlist = purpleGroup.concat(blueGroup, greenGroup, yellowGroup);
 
 let allGroups = [purpleGroup, blueGroup, greenGroup, yellowGroup];
 let clickedSoFar = [];
