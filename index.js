@@ -5,7 +5,6 @@ window.onload = function() {
 let height = 4;
 let width = 4;
 
-// panda, mouse, pocky, emily, reels, benny, cutie, kissy, 
 
 let purpleGroup = ["GF", "PAD", "LUCK", "TRAP"];
 let blueGroup = ["WORM", "MERMAID", "ALICE", "PANDA"];
@@ -158,7 +157,7 @@ function checkSolution() {
     document.getElementById("mistakes").innerText = "Mistakes remaining: " + mistakesRemaining.toString();
 
     if (mistakesRemaining == 0) {
-        document.getElementById("result").innerText = "Game over :( You're still sexy tho";
+        document.getElementById("result").innerText = "Game over :( You're still smart and awesome tho";
     }
 }
 
