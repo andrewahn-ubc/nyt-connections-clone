@@ -96,7 +96,7 @@ function shuffle() {
 
 function clickHappened() {
     if (this.classList.contains("tile-not-clicked")) {
-        if (clickedSoFar.length >= 4) return;
+        if (clickedSoFar.length >= width) return;
 
         clickedSoFar.push(this.innerText);
         this.classList.replace("tile-not-clicked", "tile-clicked");
@@ -145,10 +145,20 @@ function checkSolution() {
             correctSoFar++;
 
             if (correctSoFar == 4) {
-                document.getElementById("result").innerText = "You are a genius!!! Happy Birthday my love :)";
+                document.getElementById("result").innerText = "You are a genius!!!";
             }
 
             return;
+        } else {
+            if (i + 1 == allGroups.length) {
+                // the case where the submitted tiles are wrong
+                for (let l = 0; l < clickedSoFar.length; l++) {
+                    let tile = document.getElementById(clickedSoFar[l]);
+                    tile.classList.replace("tile-clicked", "tile-not-clicked");
+                }
+        
+                clickedSoFar = [];
+            }
         }
     }
 
@@ -156,7 +166,7 @@ function checkSolution() {
     document.getElementById("mistakes").innerText = "Mistakes remaining: " + mistakesRemaining.toString();
 
     if (mistakesRemaining == 0) {
-        document.getElementById("result").innerText = "Game over :( You're still smart and awesome tho";
+        document.getElementById("result").innerText = "Game over :(";
     }
 }
 

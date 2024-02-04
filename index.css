@@ -51,9 +51,9 @@ hr {
 
 #mistakes-panel {
     width: 200px;
-    height: 40px;
-    margin: 30 auto;
-    margin-top: 60px;
+    height: 20px;
+    margin: 0 auto;
+    margin-top: 70px;
     margin-bottom: 0px;
     display: flex;
     flex-wrap: wrap;
@@ -65,7 +65,7 @@ hr {
     font-weight: bold;
     color: black;
     letter-spacing: 0px;
-    margin-bottom: 17px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -95,6 +95,12 @@ hr {
     align-items: center;
 }
 
+.button-not-clicked:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: 0.1s linear;
+}
+
 .button-clicked {
     /* Box */
     border: 2px solid black;
@@ -112,6 +118,12 @@ hr {
     font-weight: bold;
     justify-content: center;
     align-items: center;
+}
+
+.button-clicked:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: 0.1s linear;
 }
 
 .tile-not-clicked {
@@ -132,6 +144,10 @@ hr {
     align-items: center;
 }
 
+.tile-not-clicked:hover {
+    cursor: pointer;
+}
+
 .tile-clicked {
     /* Box */
     border: 2px solid #696969;
@@ -148,6 +164,10 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.tile-clicked:hover {
+    cursor: pointer;
 }
 
 .green-group {
@@ -170,6 +190,10 @@ hr {
     align-items: center;
 }
 
+.green-group:hover {
+    cursor: pointer;
+}
+
 .yellow-group {
     background-color: #fcd42c;
     border: 2px solid;
@@ -188,6 +212,10 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.yellow-group:hover {
+    cursor: pointer;
 }
 
 .blue-group {
@@ -210,6 +238,10 @@ hr {
     align-items: center;
 }
 
+.blue-group:hover {
+    cursor: pointer;
+}
+
 .purple-group {
     background-color: #c074c4;
     border: 2px solid; 
@@ -228,4 +260,8 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.purple-group:hover {
+    cursor: pointer;
 }
