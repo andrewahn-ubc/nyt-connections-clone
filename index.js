@@ -2,14 +2,13 @@ window.onload = function() {
     initialize();
 }
 
+let purpleGroup = ["one", "two", "three", "four"];
+let blueGroup = ["red", "blue", "yellow", "green"];
+let greenGroup = ["YYC", "YVR", "YEG", "YYJ"];
+let yellowGroup = ["UBC", "UVic", "UofC", "UofA"];
+
 let height = 4;
 let width = 4;
-
-
-let purpleGroup = ["GF", "PAD", "LUCK", "TRAP"];
-let blueGroup = ["WORM", "MERMAID", "ALICE", "PANDA"];
-let greenGroup = ["SUPERSTAR", "KYKY", "GIRL", "BABY"];
-let yellowGroup = ["FLOAT", "DENNY", "LANGULY", "POCKY"];
 
 let wordlist = purpleGroup.concat(blueGroup, greenGroup, yellowGroup);
 
