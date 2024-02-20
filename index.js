@@ -24,9 +24,9 @@ function initialize() {
     for (let r = 0; r < height; r++) {
         for (let c = 0; c < width; c++) {
             let tile = document.createElement("span");
-            tile.id = wordlist[r*4 + c];
+            tile.id = wordlist[r*dimension + c];
             tile.classList.add("tile-not-clicked");
-            tile.innerText = wordlist[r*4 + c];
+            tile.innerText = wordlist[r*dimension + c];
             document.getElementById("board").appendChild(tile);
             allTiles.push(tile);
             tile.addEventListener("click", clickHappened);
@@ -69,7 +69,7 @@ function initialize() {
 
 // Deselects all selected tiles
 function deselect() {
-    if (clickedSoFar.length == 4) {
+    if (clickedSoFar.length == width) {
         document.getElementById("submit").classList.replace("button-clicked", "button-not-clicked");
     }
     
@@ -90,7 +90,7 @@ function shuffle() {
     let allTilesCopy = allTiles;
     let newAllTiles = [];
 
-    for (let n = 0; n < 16; n++) {
+    for (let n = 0; n < height*width; n++) {
         let currTile = allTilesCopy[Math.floor(allTilesCopy.length*Math.random())];
         document.getElementById("board").appendChild(currTile);
         newAllTiles.push(currTile);
@@ -108,7 +108,7 @@ function clickHappened() {
         clickedSoFar.push(this.innerText);
         this.classList.replace("tile-not-clicked", "tile-clicked");
 
-        if (clickedSoFar.length == 4) {
+        if (clickedSoFar.length == width) {
             // Turns the submit button black
             document.getElementById("submit").classList.replace("button-not-clicked", "button-clicked");
         }
@@ -116,7 +116,7 @@ function clickHappened() {
         let i = clickedSoFar.indexOf(this.innerText);
         clickedSoFar.splice(i, 1);
         this.classList.replace("tile-clicked", "tile-not-clicked");
-        if (clickedSoFar.length == 3) {
+        if (clickedSoFar.length == (width - 1)) {
             document.getElementById("submit").classList.replace("button-clicked", "button-not-clicked");
         }
     }
@@ -154,7 +154,7 @@ function checkSolution() {
             clickedSoFar = [];
             correctSoFar++;
 
-            if (correctSoFar == 4) {
+            if (correctSoFar == height) {
                 document.getElementById("result").innerText = "You are a genius!!!";
             }
 
