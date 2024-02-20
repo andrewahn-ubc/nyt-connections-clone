@@ -1,25 +1,26 @@
+// Starts the game
 window.onload = function() {
     initialize();
 }
 
+// Initializes variables
 let purpleGroup = ["one", "two", "three", "four"];
 let blueGroup = ["red", "blue", "yellow", "green"];
 let greenGroup = ["YYC", "YVR", "YEG", "YYJ"];
 let yellowGroup = ["UBC", "UVic", "UofC", "UofA"];
-
-let height = 4;
-let width = 4;
-
 let wordlist = purpleGroup.concat(blueGroup, greenGroup, yellowGroup);
-
+let dimension = 4;
+let height = dimension;
+let width = dimension;
 let allGroups = [purpleGroup, blueGroup, greenGroup, yellowGroup];
 let clickedSoFar = [];
 let mistakesRemaining = 4;
 let correctSoFar = 0;
 let allTiles = [];
 
+// Sets up the game
 function initialize() {
-    // Create the board
+    // Creates the board
     for (let r = 0; r < height; r++) {
         for (let c = 0; c < width; c++) {
             let tile = document.createElement("span");
@@ -34,6 +35,7 @@ function initialize() {
 
     shuffle();
 
+    // Adds the "shuffle" button
     let shuffleButton = document.createElement("span");
     shuffleButton.id = "shuffle";
     shuffleButton.classList.add("button-not-clicked");
@@ -41,6 +43,7 @@ function initialize() {
     document.getElementById("button-panel").appendChild(shuffleButton);
     shuffleButton.addEventListener("click", shuffle);
 
+    // Adds the "de-select" button
     let deselectButton = document.createElement("span");
     deselectButton.id = "deselect";
     deselectButton.classList.add("button-not-clicked");
@@ -48,6 +51,7 @@ function initialize() {
     document.getElementById("button-panel").appendChild(deselectButton);
     deselectButton.addEventListener("click", deselect);
 
+    // Adds the "submit" button
     let submitButton = document.createElement("span");
     submitButton.id = "submit";
     submitButton.classList.add("button-not-clicked");
@@ -55,6 +59,7 @@ function initialize() {
     document.getElementById("button-panel").appendChild(submitButton);
     submitButton.addEventListener("click", checkSolution);
 
+    // Adds the "mistakes" display
     let mistakes = document.createElement("span");
     mistakes.id = "mistakes";
     mistakes.classList.add("mistakes");
@@ -62,6 +67,7 @@ function initialize() {
     document.getElementById("mistakes-panel").appendChild(mistakes);
 }
 
+// Deselects all selected tiles
 function deselect() {
     if (clickedSoFar.length == 4) {
         document.getElementById("submit").classList.replace("button-clicked", "button-not-clicked");
@@ -74,8 +80,8 @@ function deselect() {
     clickedSoFar = [];
 }
 
+// Rearranges all tiles on the board
 function shuffle() {
-    // TODO: remove all children from board
     const board = document.getElementById("board");
     while(board.firstChild) {
         board.removeChild(board.lastChild);
@@ -94,6 +100,7 @@ function shuffle() {
     allTiles = newAllTiles;
 }
 
+// Handles tile selections
 function clickHappened() {
     if (this.classList.contains("tile-not-clicked")) {
         if (clickedSoFar.length >= width) return;
@@ -102,7 +109,7 @@ function clickHappened() {
         this.classList.replace("tile-not-clicked", "tile-clicked");
 
         if (clickedSoFar.length == 4) {
-            // set submit button black
+            // Turns the submit button black
             document.getElementById("submit").classList.replace("button-not-clicked", "button-clicked");
         }
     } else if (this.classList.contains("tile-clicked")) {
@@ -115,13 +122,16 @@ function clickHappened() {
     }
 }
 
+// Triggered when the user submits a guess
 function checkSolution() {
-    // set submit button to original
+    // Sets submit button to original
     if (mistakesRemaining == 0) return;
     document.getElementById("submit").classList.replace("button-clicked", "button-not-clicked");
 
-    if (clickedSoFar.length > 4 || clickedSoFar.length < 4) return;
+    // Ensures user has selected correct number of tiles
+    if (clickedSoFar.length > dimension || clickedSoFar.length < dimension) return;
 
+    // Parses through each color group to validate the user's guess
     for (let i = 0; i < allGroups.length; i++) {
         let currGroup = allGroups[i];
         let correct = true;
@@ -162,6 +172,7 @@ function checkSolution() {
         }
     }
 
+    // Updates the mistakes panel
     mistakesRemaining--;
     document.getElementById("mistakes").innerText = "Mistakes remaining: " + mistakesRemaining.toString();
 
